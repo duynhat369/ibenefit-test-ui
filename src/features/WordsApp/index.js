@@ -1,11 +1,10 @@
-import axios from 'axios'
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Wallet from "./components/Wallet"
 import './styles.css'
 
 function WordsApp() {
-    const [words, setWords] = useState([])
-    const wordss = [
+    // const [words, setWords] = useState([])
+    const words = [
         { name: "analyst", index: 1 },
         { name: "banana", index: 2 },
         { name: "craw", index: 3 },
@@ -35,14 +34,14 @@ function WordsApp() {
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await axios.get("https://metanode.vipn.net/eng.json")
-                console.log(data)
-                setWords(data)
+                // const { data } = await axios.get("https://metanode.vipn.net/eng.json")
+                // console.log(data)
+                // setWords(data)
             } catch (error) {
                 console.log(error)
             }
         })()
-    }, [words])
+    }, [])
 
     return (
         <div className="words-app">
