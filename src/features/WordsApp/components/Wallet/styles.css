@@ -1,0 +1,52 @@
+.wallet {
+    margin-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.wallet .wallet-title {
+    color: #004DFF;
+}
+
+.wallet .wallet-card {}
+
+.wallet .wallet-card .wallet-words {}
+
+.wallet .wallet-card .wallet-words .word-index {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    color: #004DFF;
+}
+.wallet .wallet-card .wallet-words .word-index::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color:  #004DFF;
+    color: #004DFF;
+    opacity: .3;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.wallet .wallet-card .wallet-words .word-name {}
+
+.wallet .wallet-copy {}
+
+.wallet .wallet-copy .copy-icon {
+    font-size: 40px;
+    color: #004DFF;
+}
+
+.wallet-bottom {
+    height: 100%;
+    padding: 32px 16px;
+}
+
+.wallet-bottom .bottom-button {
+    background-color: #004DFF;
+}

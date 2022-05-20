@@ -1,5 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
+  width: 425px;
+  height: 812px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   text-align: center;
+  background-color: #F8F8F8;
+  color: #04004D;
+}
+
+.App .header {
+  color: #3CBEC5;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.App .title .title-icon {
+  margin-left: -10px;
+  font-size: 32px;
+}
+
+.App .title {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .App-logo {
@@ -32,6 +58,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
