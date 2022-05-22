@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 .App {
+  position: relative;
   width: 425px;
-  height: 812px;
   padding-top: 14px;
-  padding-bottom: 14px;
   text-align: center;
   background-color: #F8F8F8;
   color: #04004D;
@@ -26,11 +25,6 @@
 .App .title {
   padding-left: 16px;
   padding-right: 16px;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -54,12 +48,11 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.wallet-bottom {
+  height: 100%;
+  padding: 36px 16px;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.wallet-bottom .bottom-button {
+  background-color: #004DFF;
 }

@@ -14,26 +14,54 @@
 
 .wallet .wallet-card .wallet-words .word-index {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     color: #004DFF;
+    font-size: 13px;
+    font-weight: bold;
 }
+
+.word-index-group {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    color: #004DFF;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.word-index-group::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    color: #004DFF;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid #004DFF;
+}
+
+
 .wallet .wallet-card .wallet-words .word-index::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background-color:  #004DFF;
-    color: #004DFF;
-    opacity: .3;
+    width: 25px;
+    height: 25px;
+    background-color: #004DFF;
+    opacity: .2;
     border-radius: 50%;
     text-align: center;
 }
 
-.wallet .wallet-card .wallet-words .word-name {}
+.wallet .wallet-card .wallet-words .word-name {
+    font-size: 15px;
+}
 
 .wallet .wallet-copy {}
 
@@ -42,11 +70,82 @@
     color: #004DFF;
 }
 
-.wallet-bottom {
-    height: 100%;
-    padding: 36px 16px;
+.wallet .wallet-copy .copy-icon:hover {
+    opacity: .8;
 }
 
-.wallet-bottom .bottom-button {
-    background-color: #004DFF;
+.clipboard {
+    width: 425px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 20px 20px 0 0;
+    transition: .5s ease-in-out;
+    z-index: 99;
+    opacity: 1;
+}
+
+.clipboard-closed {
+    width: 425px;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 20px 20px 0 0;
+    transition: .5s ease-in-out;
+    z-index: -99;
+    opacity: 0;
+}
+
+.clipboard .clipboard-copy-icon,
+.clipboard-closed .clipboard-copy-icon {
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+    font-size: 40px;
+    color: #fff;
+    background-color: #04B800;
+    border-radius: 50%;
+}
+
+.clipboard .down-icon,
+.clipboard-closed .down-icon {
+    font-size: 32px;
+}
+
+.clipboard .down-icon:hover {
+    opacity: .8;
+}
+
+.group-words {
+    border: 1px solid #E5E5E5;
+}
+
+.group-radio>label {
+    padding: 5px 10px;
+}
+
+.group-radio :hover {
+    background-color: #BBCFFB;
+    color: #004DFF;
+    /* opacity: .3; */
+}
+
+.MuiFormGroup-root.radio-group.css-dmmspl-MuiFormGroup-root {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.group-radio>input {
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.group-radio>input:checked+label {
+    background-color: #BBCFFB;
+    color: #004DFF;
 }
