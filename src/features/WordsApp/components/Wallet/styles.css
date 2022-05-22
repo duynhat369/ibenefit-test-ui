@@ -74,7 +74,8 @@
     opacity: .8;
 }
 
-.clipboard {
+.clipboard,
+.created {
     width: 425px;
     bottom: 0;
     left: 50%;
@@ -83,9 +84,13 @@
     transition: .5s ease-in-out;
     z-index: 99;
     opacity: 1;
+
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-.clipboard-closed {
+.clipboard-closed,
+.created-closed {
     width: 425px;
     bottom: 20%;
     left: 50%;
@@ -96,6 +101,8 @@
     opacity: 0;
 }
 
+.created .created-copy-icon,
+.created-closed .created-copy-icon,
 .clipboard .clipboard-copy-icon,
 .clipboard-closed .clipboard-copy-icon {
     width: 60px;
@@ -107,11 +114,14 @@
     border-radius: 50%;
 }
 
+.created .down-icon,
 .clipboard .down-icon,
-.clipboard-closed .down-icon {
+.clipboard-closed .down-icon,
+.created-closed .down-icon {
     font-size: 32px;
 }
 
+.created .down-icon:hover,
 .clipboard .down-icon:hover {
     opacity: .8;
 }
@@ -148,4 +158,8 @@
 .group-radio>input:checked+label {
     background-color: #BBCFFB;
     color: #004DFF;
+}
+
+.created-button {
+    background-color: #004DFF;
 }

@@ -1,5 +1,4 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useState } from 'react';
 // import {
 //   BrowserRouter as Router, Route, Routes
@@ -62,9 +61,6 @@ function App() {
     getRandomObject(new24Words)
   }
 
-  const handleConfirmSubmit = () => {
-    // return setOpen(true)
-  }
   return (
     <>
       {/* <Router> */}
@@ -76,19 +72,18 @@ function App() {
         </div>
         <WordsApp words={new24Words} />
         <ConfirmWords words={words18} />
-        <div className='wallet-bottom flex flex-col mt-6 bg-white'>
-          <div className='flex mb-9'>
-            <p className='font-bold mr-auto'>How does this work?</p>
-            <ChevronRightIcon />
-          </div>
-          {/* if route = "/" => NEXT, if route = "/confirm" => submit */}
-          {/* <button className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'>NEXT</button> */}
-          <button
-            className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
-            onClick={handleConfirmSubmit}
-          >SUBMIT</button>
-        </div>
 
+        {/* <div className='wallet-bottom flex flex-col mt-6 bg-white'>
+            <div className='flex mb-9'>
+              <p className='font-bold mr-auto'>How does this work?</p>
+              <ChevronRightIcon />
+            </div> */}
+        {/* if route = "/" => NEXT, if route = "/confirm" => submit */}
+        {/* <button className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'>NEXT</button> */}
+        {/* <button
+              className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
+            >SUBMIT</button>
+          </div> */}
 
 
         {/* A <Switch> looks through its children <Route>s and
