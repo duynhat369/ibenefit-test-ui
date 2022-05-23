@@ -4,7 +4,7 @@
     padding-right: 16px;
 }
 
-.wallet .wallet-title > span:first-child {
+.wallet .wallet-title>span:first-child {
     color: #004DFF;
 }
 
@@ -140,7 +140,7 @@
     /* opacity: .3; */
 }
 
-.MuiFormGroup-root.radio-group.css-dmmspl-MuiFormGroup-root {
+.MuiFormGroup-root.radio-group {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
