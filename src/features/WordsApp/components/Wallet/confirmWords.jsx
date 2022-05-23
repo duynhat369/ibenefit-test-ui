@@ -8,6 +8,7 @@ import "./styles.css";
 
 function ConfirmWords({ words, onSubmit }) {
     const [values, setValues] = useState([]);
+    const [checked, setChecked] = useState(0);
     const [flag, setFlag] = useState(false);
     const [open, setOpen] = useState(false);
     const handleSubmitClick = () => {
@@ -44,12 +45,20 @@ function ConfirmWords({ words, onSubmit }) {
         }
         setValues(tempArr)
     }
+    const handleCheckBoxChange = () => {
+        const checked = document.querySelectorAll('input[type=checkbox]:checked');
+        console.log("checked", checked)
+        setChecked(checked.length)
+    }
 
     return (
         <>
             <form onSubmit={handleConfirmSubmit}>
                 <div className='wallet text-left'>
-                    <p className='wallet-title font-semibold py-4'>Confirm Your Seed Phrase</p>
+                    <div className='wallet-title flex font-semibold inline-block justify-between py-4'>
+                        <span className='inline-block'>Confirm Your Seed Phrase</span>
+                        <span className='inline-block'>{values.length}/6</span>
+                    </div>
                     <div className='wallet-card grid gap-4'>
                         {groupWord ?
                             groupWord?.map((word) => (
@@ -122,6 +131,7 @@ function ConfirmWords({ words, onSubmit }) {
                         >
                             <div className='flex mb-2 text-left'>
                                 <input
+                                    onChange={handleCheckBoxChange}
                                     type='checkbox'
                                     value={1}
                                     name={1}
@@ -136,6 +146,7 @@ function ConfirmWords({ words, onSubmit }) {
                             </div>
                             <div className='flex mb-2 text-left'>
                                 <input
+                                    onChange={handleCheckBoxChange}
                                     type='checkbox'
                                     value={2}
                                     name={2}
@@ -150,6 +161,7 @@ function ConfirmWords({ words, onSubmit }) {
                             </div>
                             <div className='flex mb-2 text-left'>
                                 <input
+                                    onChange={handleCheckBoxChange}
                                     type='checkbox'
                                     value={3}
                                     name={3}
@@ -163,7 +175,10 @@ function ConfirmWords({ words, onSubmit }) {
                                 </label>
                             </div>
                         </div>
-                        <button className='created-button border py-5 px-10 w-full mb-5 rounded-lg text-white'>I UNDERSTAND</button>
+                        <button
+                            className='created-button border py-5 px-10 w-full mb-5 rounded-lg text-white'
+                            disabled={checked.length < 3 ? true : false}
+                        >I UNDERSTAND</button>
                     </div>
                 </div>
             </form>

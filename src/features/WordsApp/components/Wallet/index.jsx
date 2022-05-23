@@ -12,7 +12,9 @@ function Wallet({ words }) {
     return (
         <>
             <div className='wallet text-left'>
-                <p className='wallet-title font-semibold py-4'>Auto Gen Seed Phrase?</p>
+            <div className='wallet-title flex font-semibold inline-block justify-between py-4'>
+                        <span className='inline-block'>Auto Seed Your Phrase</span>
+                    </div>
                 <div className='wallet-card grid gap-4 grid-cols-3'>
                     {words ?
                         words?.map((word) => (

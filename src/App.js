@@ -1,8 +1,9 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useState } from 'react';
-// import {
-//   BrowserRouter as Router, Route, Routes
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router, Link, Route, Routes
+} from "react-router-dom";
 import './App.css';
 import WordsApp from './features/WordsApp';
 import ConfirmWords from './features/WordsApp/components/Wallet/confirmWords';
@@ -61,43 +62,41 @@ function App() {
     getRandomObject(new24Words)
   }
 
+  const handleSetRoute = () => {
+    setOpen(true)
+  }
   return (
     <>
-      {/* <Router> */}
-      <div className="App mx-auto">
-        <p className='header pb-4 font-bold'>UI iBenefit Test - Nguyen Duy Nhat</p>
-        <div className='title flex items-center justify-start'>
-          <ChevronLeftIcon className='title-icon mr-2' />
-          <span className='font-semibold text-left'>Create New Wallet</span>
-        </div>
-        <WordsApp words={new24Words} />
-        <ConfirmWords words={words18} />
-
-        {/* <div className='wallet-bottom flex flex-col mt-6 bg-white'>
-            <div className='flex mb-9'>
-              <p className='font-bold mr-auto'>How does this work?</p>
-              <ChevronRightIcon />
-            </div> */}
-        {/* if route = "/" => NEXT, if route = "/confirm" => submit */}
-        {/* <button className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'>NEXT</button> */}
-        {/* <button
-              className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
-            >SUBMIT</button>
-          </div> */}
-
-
-        {/* A <Switch> looks through its children <Route>s and
+      <Router>
+        <div className="App mx-auto">
+          <p className='header pb-4 font-bold'>UI iBenefit Test - Nguyen Duy Nhat</p>
+          <div className='title flex items-center justify-start'>
+            <ChevronLeftIcon className='title-icon mr-2' />
+            <span className='font-semibold text-left'>Create New Wallet</span>
+          </div>
+          {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
-        {/* <Routes>
-            <Route path="/confirm">
-              <ConfirmWords words={words18} />
-            </Route>
-            <Route path="/">
-              <WordsApp words={new24Words} />
-            </Route>
-          </Routes> */}
-      </div>
-      {/* </Router> */}
+          <Routes>
+            <Route path="/confirm" element={<ConfirmWords words={words18} />}></Route>
+            <Route path="/" element={<WordsApp words={new24Words} />}></Route>
+          </Routes>
+
+          {!open && (
+            <div className='wallet-bottom flex flex-col mt-6 bg-white'>
+              <div className='flex mb-9'>
+                <p className='font-bold mr-auto'>How does this work?</p>
+                <ChevronRightIcon />
+              </div>
+              <Link
+                to="/confirm"
+                onClick={handleSetRoute}
+                className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
+              >
+                NEXT</Link>
+            </div>
+          )}
+        </div>
+      </Router>
     </>
   );
 }
