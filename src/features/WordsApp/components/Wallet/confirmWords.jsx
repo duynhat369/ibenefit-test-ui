@@ -48,7 +48,7 @@ function ConfirmWords({ words }) {
                                             aria-labelledby="demo-radio-buttons-group-label"
                                             defaultValue="female"
                                             name="radio-buttons-group"
-                                            className='radio-group w-full justify-around items-center'
+                                            className='flex flex-row radio-group w-full justify-around items-center'
                                         >
                                             {word.list.map((item, index) => (
                                                 <div
