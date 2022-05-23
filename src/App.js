@@ -87,7 +87,6 @@ function App() {
     <>
       <Router>
         <div className="App mx-auto">
-          <p className='header pb-4 font-bold'>UI iBenefit Test - Nguyen Duy Nhat</p>
           <div className='title flex items-center justify-start'>
             <ChevronLeftIcon className='title-icon mr-2' />
             <Link onClick={handleReload} to="/" className='font-semibold text-left'>Create New Wallet</Link>
