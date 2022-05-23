@@ -6,63 +6,42 @@ import RadioGroup from '@mui/material/RadioGroup';
 import { useState } from "react";
 import "./styles.css";
 
-function ConfirmWords({ words, onSubmit }) {
+function ConfirmWords({ words }) {
     const [values, setValues] = useState([]);
     const [checked, setChecked] = useState(0);
     const [flag, setFlag] = useState(false);
     const [open, setOpen] = useState(false);
-    const handleSubmitClick = () => {
-        return setOpen(true)
-    };
-    const handleClose = () => setOpen(false);
-    const randomNum = (array) => {
-        return array[Math.floor(Math.random() * array.length)];
-    }
+    console.log("rerender")
 
-    const newWords = [...words]
-    const groupWord = []
-
-    for (let i = 0; i < 6; i++) {
-        const newArrayHasName = newWords.map((element) => element.name)
-        const newArrayHasIndex = newWords.map((element) => element.index + 1)
-        const nameSlice = newArrayHasName.slice(0, 3)
-        const indexSlice = newArrayHasIndex.slice(0, 3)
-        let item = {
-            "list": nameSlice,
-            "primary": randomNum(indexSlice)
-        }
-        groupWord.push(item)
-        newWords.splice(0, 3)
+    const handleClose = () => {
+        setFlag(false)
+        setOpen(false);
     }
 
     const handleConfirmSubmit = (e) => {
-        setFlag(true)
         e.preventDefault();
-        const a = document.querySelectorAll('input[class="cursor-pointer"]:checked');
-        const tempArr = []
-        for (let i = 0; i < a.length; i++) {
-            tempArr.push(a[i].value)
-        }
-        setValues(tempArr)
+        setFlag(true)
+        setValues(document.querySelectorAll('input[class="cursor-pointer"]:checked'));
+        if (document.querySelectorAll('input[class="cursor-pointer"]:checked').length < 6) return
+        setOpen(true)
     }
     const handleCheckBoxChange = () => {
-        const checked = document.querySelectorAll('input[type=checkbox]:checked');
+        setChecked(document.querySelectorAll('input[type=checkbox]:checked').length);
         console.log("checked", checked)
-        setChecked(checked.length)
     }
 
     return (
         <>
             <form onSubmit={handleConfirmSubmit}>
-                <div className='wallet text-left'>
+                <div className='wallet text-left mb-16'>
                     <div className='wallet-title flex font-semibold inline-block justify-between py-4'>
                         <span className='inline-block'>Confirm Your Seed Phrase</span>
                         <span className='inline-block'>{values.length}/6</span>
                     </div>
                     <div className='wallet-card grid gap-4'>
-                        {groupWord ?
-                            groupWord?.map((word) => (
-                                <div key={word.primary + '123'} className="wallet-words group-words flex items-center justify-around rounded-lg px-2 py-4 border w-full">
+                        {words ?
+                            words?.map((word) => (
+                                <div key={word.primary + '123'} className="wallet-words group-words flex items-center justify-around rounded-lg px-2 py-5 border w-full">
                                     <span style={{ width: '25%' }} className='word-index-group inline-flex justify-center items-center relative w-2 rounded-full'>{word.primary}</span>
                                     <FormControl className='w-3/4 relative'>
                                         <RadioGroup
@@ -72,14 +51,6 @@ function ConfirmWords({ words, onSubmit }) {
                                             className='radio-group w-full'
                                         >
                                             {word.list.map((item, index) => (
-                                                // <FormControlLabel
-                                                //     key={item}
-                                                //     value={item}
-                                                //     control={<Radio />}
-                                                //     label={item}
-                                                //     onClick={() => handleWordClick(item)}
-                                                //     className={`word-item-group text-center rounded cursor-pointer relative`}
-                                                // />
                                                 <div
                                                     key={index}
                                                     className="group-radio text-center relative"
@@ -106,7 +77,7 @@ function ConfirmWords({ words, onSubmit }) {
                         }
                     </div>
                     {values.length < 6 && flag === true ? (
-                        <p className='mt-4 text-red-500'>Wrong seed phrases. Please try again!</p>
+                        <p className='mt-4 text-red-500 absolute -b-5'>Wrong seed phrases. Please try again!</p>
                     ) : (<p></p>)}
                 </div>
                 <div className='wallet-bottom flex flex-col mt-6 bg-white'>
@@ -117,13 +88,13 @@ function ConfirmWords({ words, onSubmit }) {
                     {/* if route = "/" => NEXT, if route = "/confirm" => submit */}
                     {/* <button className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'>NEXT</button> */}
                     <button
-                        onClick={handleSubmitClick}
+                        // onClick={handleSubmitClick}
                         className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
                     >SUBMIT</button>
-                    <div className={open && values.length === 6 ? 'created absolute flex flex-col justify-center items-center bg-white' : 'created-closed absolute flex flex-col justify-center items-center bg-white'}>
-                        <button onClick={handleClose}>
+                    <div className={values.length === 6 && open ? 'created absolute flex flex-col justify-center items-center bg-white' : 'created-closed absolute flex flex-col justify-center items-center bg-white'}>
+                        <div onClick={handleClose} className="cursor-pointer">
                             <KeyboardArrowDownIcon className='down-icon mt-4 text-slate-400' />
-                        </button>
+                        </div>
                         <DoneIcon className='created-copy-icon mb-5 my-5' />
                         <p className='my-5 font-bold text-lg'>Your wallet has been created!</p>
                         <div
@@ -176,8 +147,9 @@ function ConfirmWords({ words, onSubmit }) {
                             </div>
                         </div>
                         <button
-                            className='created-button border py-5 px-10 w-full mb-5 rounded-lg text-white'
-                            disabled={checked.length < 3 ? true : false}
+                            onSubmit={() => false}
+                            className='created-button font-bold border py-5 px-10 w-full mb-5 rounded-lg text-white'
+                            disabled={checked < 3}
                         >I UNDERSTAND</button>
                     </div>
                 </div>

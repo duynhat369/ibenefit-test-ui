@@ -65,6 +65,25 @@ function App() {
   const handleSetRoute = () => {
     setOpen(true)
   }
+
+  const randomNum = (array) => {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+  const newWords = [...words18]
+  const groupWord = []
+  for (let i = 0; i < 6; i++) {
+    const newArrayHasName = newWords.map((element) => element.name)
+    const newArrayHasIndex = newWords.map((element) => element.index + 1)
+    const nameSlice = newArrayHasName.slice(0, 3)
+    const indexSlice = newArrayHasIndex.slice(0, 3)
+    let item = {
+      "list": nameSlice,
+      "primary": randomNum(indexSlice)
+    }
+    groupWord.push(item)
+    newWords.splice(0, 3)
+    console.log("for")
+  }
   return (
     <>
       <Router>
@@ -77,7 +96,7 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
           <Routes>
-            <Route path="/confirm" element={<ConfirmWords words={words18} />}></Route>
+            <Route path="/confirm" element={<ConfirmWords words={groupWord} />}></Route>
             <Route path="/" element={<WordsApp words={new24Words} />}></Route>
           </Routes>
 

@@ -4,7 +4,7 @@
     padding-right: 16px;
 }
 
-.wallet .wallet-title {
+.wallet .wallet-title > span:first-child {
     color: #004DFF;
 }
 
@@ -162,4 +162,8 @@
 
 .created-button {
     background-color: #004DFF;
+}
+
+.created-button:disabled {
+    opacity: .3;
 }
