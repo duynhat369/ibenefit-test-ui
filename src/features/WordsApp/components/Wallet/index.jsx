@@ -1,6 +1,8 @@
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import '../Wallet/styles.css';
 
 function Wallet({ words }) {
@@ -12,9 +14,9 @@ function Wallet({ words }) {
     return (
         <>
             <div className='wallet text-left'>
-            <div className='wallet-title flex font-semibold inline-block justify-between py-4'>
-                        <span className='inline-block'>Auto Seed Your Phrase</span>
-                    </div>
+                <div className='wallet-title flex font-semibold inline-block justify-between py-4'>
+                    <span className='inline-block'>Auto Seed Your Phrase</span>
+                </div>
                 <div className='wallet-card grid gap-4 grid-cols-3'>
                     {words ?
                         words?.map((word) => (
@@ -48,6 +50,18 @@ function Wallet({ words }) {
                     </div>
                     {/* </Modal> */}
                 </div>
+            </div>
+
+            <div className='wallet-bottom flex flex-col mt-6 bg-white'>
+                <div className='flex mb-9'>
+                    <p className='font-bold mr-auto'>How does this work?</p>
+                    <ChevronRightIcon />
+                </div>
+                <Link
+                    to="/confirm"
+                    className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
+                >
+                    NEXT</Link>
             </div>
         </>
     )

@@ -1,6 +1,5 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router, Link, Route, Routes
 } from "react-router-dom";
@@ -9,10 +8,12 @@ import WordsApp from './features/WordsApp';
 import ConfirmWords from './features/WordsApp/components/Wallet/confirmWords';
 
 function App() {
-  const [open, setOpen] = useState(false);
-
-  // const [words, setWords] = useState([])
+  const [reload, setReload] = useState(false)
   const data = ["analyst", "banana", "craw", "craw", "craw", "craw", "craw", "craw", "craw", "craw", "crab", "crab", "december", "eleven", "egg", "fan", "favorite", "human", "hight", "height", "job", "journey", "ten", "tailwind", "limit", "schema", "known", "vietnam", "may", "november", "light", "nurse", "horse", "habit", "rabbit", "console", "index", "free", "dumb", "wild", "money", "career", "about", "skills", "profile", "profile", "profile", "profile", "profile", "profile", "portfolio", "contain", "objective",]
+
+  useEffect(() => {
+
+  }, [reload])
 
   let words = [];
   let words18 = []
@@ -62,10 +63,6 @@ function App() {
     getRandomObject(new24Words)
   }
 
-  const handleSetRoute = () => {
-    setOpen(true)
-  }
-
   const randomNum = (array) => {
     return array[Math.floor(Math.random() * array.length)];
   }
@@ -82,7 +79,9 @@ function App() {
     }
     groupWord.push(item)
     newWords.splice(0, 3)
-    console.log("for")
+  }
+  const handleReload = () => {
+    setReload(!reload)
   }
   return (
     <>
@@ -91,7 +90,7 @@ function App() {
           <p className='header pb-4 font-bold'>UI iBenefit Test - Nguyen Duy Nhat</p>
           <div className='title flex items-center justify-start'>
             <ChevronLeftIcon className='title-icon mr-2' />
-            <span className='font-semibold text-left'>Create New Wallet</span>
+            <Link onClick={handleReload} to="/" className='font-semibold text-left'>Create New Wallet</Link>
           </div>
           {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
@@ -99,21 +98,6 @@ function App() {
             <Route path="/confirm" element={<ConfirmWords words={groupWord} />}></Route>
             <Route path="/" element={<WordsApp words={new24Words} />}></Route>
           </Routes>
-
-          {!open && (
-            <div className='wallet-bottom flex flex-col mt-6 bg-white'>
-              <div className='flex mb-9'>
-                <p className='font-bold mr-auto'>How does this work?</p>
-                <ChevronRightIcon />
-              </div>
-              <Link
-                to="/confirm"
-                onClick={handleSetRoute}
-                className='bottom-button py-4 px-8 font-bold text-white bg-black rounded-lg'
-              >
-                NEXT</Link>
-            </div>
-          )}
         </div>
       </Router>
     </>
